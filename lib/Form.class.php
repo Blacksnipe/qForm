@@ -48,6 +48,8 @@ class Form
     public function addField($field)
     {
     	$this->fields[] = $field;
+      
+      return $this;
     }
     
     public function addActionInput($btn)
@@ -70,6 +72,8 @@ class Form
     {
     	$this->submitBtn = $btn;
     	$this->addActionInput($this->submitBtn);
+      
+      return $this;
     }
     
     public function validate($data)

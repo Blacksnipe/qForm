@@ -1,22 +1,24 @@
 <?php
 
-error_reporting(E_ALL);
-ini_set('display_errors', '1');
-
-require_once 'PagedForm.class.php';
 session_start();
+
+error_reporting(E_ALL);
+ini_set('display_errors', E_ALL);
+
+require_once 'lib/PagedForm.class.php';
 
 $formA 					= new Form();
 $formA->id 				= 'regform';
 $formA->class 			= 'clearfix';
 $formA->inlineErrors		= false;
-$formA->addField(new FieldInput('naam', 'Naam', 'Gelieve je achternaam in te vullen', true, 'text', 'string'));
-$formA->addField(new FieldInput('voornaam', 'Voornaam', 'Gelieve je voornaam in te vullen', true, 'text', 'string'));
-$formA->addField(new MultiInput('oogballen', 'Aantal oogballen', 'Gelieve je aantal oogballen te selecteren', array('---','Geen','Twee','Drie'), 'select', true, true));
-$formA->addField(new MultiInput('rugbyballen', 'Aantal rugbyballen', 'Gelieve je aantal rugbyballen te selecteren', array('Geen','Twee','Drie'), 'checkbox', true));
-$formA->addField(new MultiInput('teelballen', 'Aantal teelballen', 'Gelieve je aantal teelballen te selecteren', array('Geen','Twee','Drie'), 'radio', true));
-$formA->addSubmitBtn(new ActionInput('submitbtn', 'Verstuur!'));
-$formA->validate($_POST);
+
+$formA->addField(new FieldInput('naam', 'Naam', 'Gelieve je achternaam in te vullen', true, 'text', 'string'))
+      ->addField(new FieldInput('voornaam', 'Voornaam', 'Gelieve je voornaam in te vullen', true, 'text', 'string'))
+      ->addField(new MultiInput('oogballen', 'Aantal oogballen', 'Gelieve je aantal oogballen te selecteren', array('---','Geen','Twee','Drie'), 'select', true, true))
+      ->addField(new MultiInput('rugbyballen', 'Aantal rugbyballen', 'Gelieve je aantal rugbyballen te selecteren', array('Geen','Twee','Drie'), 'checkbox', true))
+      ->addField(new MultiInput('teelballen', 'Aantal teelballen', 'Gelieve je aantal teelballen te selecteren', array('Geen','Twee','Drie'), 'radio', true))
+      ->addSubmitBtn(new ActionInput('submitbtn', 'Verstuur!'))
+      ->validate($_POST);
 
 /*$formB 					= new Form();
 $formB->id 				= 'regform';
